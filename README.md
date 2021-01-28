@@ -57,4 +57,4 @@ If you have any questions, I can be reached via:
 ## License 
 Copyright © 2021 Nash Walters,
 
-Released under the [MIT](https://github.com/nashwalters/pro-readme-generator/LICENSE) license.
+Released under the [MIT](https://github.com/nashwalters/eng-team-generator/LICENSE) license.
