@@ -1,4 +1,3 @@
-# eng-team-generator
 <h1 align=center> Team Generator</h1>
 
 ## Table of Contents
