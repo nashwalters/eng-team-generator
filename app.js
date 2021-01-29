@@ -77,11 +77,12 @@ inquirer.prompt(questions)
         employees.push(new Intern(data.name, data.id, data.email, data.school))
     } 
 
-
-
-    
+    if (data.addnew === true) {
+        userPrompt();
+    }else{
+        fs.writeFile(outputPath,render(employees),(err) =>
+        err ? console.log(err) : console.log('Success!'));
+    } 
 })
 
-
-
-  userPrompt();
+userPrompt();
