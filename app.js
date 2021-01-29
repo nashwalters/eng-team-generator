@@ -55,15 +55,20 @@ const questions = [
         when: (data) => data.role === 'Intern'
     },
     {
-      type: 'input',
-      name: 'email',
-      message: "Enter the employee's email address.",
+    type: 'input',
+        name: 'email',
+        message: "Enter the employee's email address.",
+    },
+    {
+    type: 'confirm',
+        name: 'addnew',
+        message: "Would you like to add another employee?",
     },
 ]
 
 const userPrompt = () =>
 inquirer.prompt(questions)
-  .then((data) => {
+.then((data) => {
     if (data.role === 'Manager'){
         employees.push(new Manager(data.name, data.id, data.email, data.officenumber))
     } else if (data.role === 'Engineer'){
@@ -71,8 +76,11 @@ inquirer.prompt(questions)
     } else {
         employees.push(new Intern(data.name, data.id, data.email, data.school))
     } 
+
+
+
     
-  })
+})
 
 
 
