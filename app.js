@@ -13,6 +13,9 @@ const render = require("./lib/htmlRenderer");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
+//Array for manager, engineer and intern
+let employees = [];
+
 //Qusetion Array
 const questions = [
     {
@@ -60,4 +63,19 @@ const questions = [
 
 const userPrompt = () =>
 inquirer.prompt(questions)
-  .then((data) => {})
+  .then((data) => {
+    if (data.role === 'Manager'){
+        employees.push(new Manager(data.name, data.id, data.email, data.officenumber))
+    } else if (data.role === 'Engineer'){
+        employees.push(new Engineer(data.name, data.id, data.email, data.github))
+    } else {
+        employees.push(new Intern(data.name, data.id, data.email, data.school))
+    } 
+    if (data.addnew === true) {
+      userPrompt();
+    }
+  })
+
+
+
+  userPrompt();
