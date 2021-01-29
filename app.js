@@ -19,6 +19,13 @@ let employees = [];
 //Qusetion Array
 const questions = [
     {
+    type: 'list',
+        name: 'role',
+        message: 'Choose employee role :',
+        choices: ['Manager', 'Engineer', 'Intern'],
+        default: 'Manager'
+    },
+    {
     type: 'input',
         name: 'name',
         message: "What is the employee's name?",
@@ -27,13 +34,6 @@ const questions = [
     type: 'input',
         name: 'id',
         message: "What is the employee's ID number?",
-    },
-    {
-    type: 'list',
-        name: 'role',
-        message: 'Choose employee role :',
-        choices: ['Manager', 'Engineer', 'Intern'],
-        default: 'Manager'
     },
     {
     type: 'input',
@@ -71,9 +71,7 @@ inquirer.prompt(questions)
     } else {
         employees.push(new Intern(data.name, data.id, data.email, data.school))
     } 
-    if (data.addnew === true) {
-      userPrompt();
-    }
+    
   })
 
 
