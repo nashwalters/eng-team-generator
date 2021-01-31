@@ -71,7 +71,8 @@ click [demo](https://drive.google.com/file/d/1UOM7_gLX0SNUiNuda21ENJuT3ODnO2kq/v
 $ npm i
 ```
 
-## Tests                           ![Tests](https://img.shields.io/badge/test%20-17%20passed-brightgreen)
+## Tests                           
+![Tests](https://img.shields.io/badge/test%20-17%20passed-brightgreen)
 
 Enter the below command in terminal to run tests.
 
