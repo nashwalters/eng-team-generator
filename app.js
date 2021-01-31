@@ -53,33 +53,42 @@ const questions = [
     {
     type: 'input',
         name: 'name',
-        message: "What is the employee's name?",
+        message: "What is the manager's name?",
+        when: (data) => data.role === 'Manager',
+        validate: validName
+    },
+    {
+    type: 'input',
+        name: 'name',
+        message: "What is the engineer's name?",
+        when: (data) => data.role === 'Engineer',
+        validate: validName
+    },
+    {
+    type: 'input',
+        name: 'name',
+        message: "What is the intern's name?",
+        when: (data) => data.role === 'Intern',
         validate: validName
     },
     {
     type: 'input',
         name: 'id',
-        message: "What is the employee's ID number?",
+        message: "What is the ID number?",
         validate: notNumber
     },
-    {
-    type: 'input',
-        name: 'officeNumber',
-        message: "What is the office number?",
-        when: (data) => data.role === 'Manager',
-        validate: notEmpty
-    },
+    
     {
     type: 'input',
         name: 'github',
-        message: "What is the employee's github username?",
+        message: "What is the engineer's github username?",
         when: (data) => data.role === 'Engineer',
         validate: notEmpty
     },
     {
     type: 'input',
         name: 'school',
-        message: "Which school does the employee attend?",
+        message: "Which school does the intern attend?",
         when: (data) => data.role === 'Intern',
         validate: notEmpty
     },
@@ -101,18 +110,18 @@ const userPrompt = () =>
 inquirer.prompt(questions)
 .then((data) => {
     if (data.role === 'Manager'){
-        employees.push(new Manager(data.name, data.id, data.email, data.officenumber))
+        employees.push(new Manager(data.name.toUpperCase(), data.id, data.email, data.officeNumber))
     } else if (data.role === 'Engineer'){
-        employees.push(new Engineer(data.name, data.id, data.email, data.github))
+        employees.push(new Engineer(data.name.toUpperCase(), data.id, data.email, data.github))
     } else {
-        employees.push(new Intern(data.name, data.id, data.email, data.school))
+        employees.push(new Intern(data.name.toUpperCase, data.id, data.email, data.school))
     } 
 
     if (data.addnew === true) {
         userPrompt();
     }else{
         fs.appendFile(outputPath,render(employees),(err) =>
-        err ? console.log(err) : console.log('Success!'));
+        err ? console.log(err) : console.log('Successfully added to team!'));
     } 
 })
 
