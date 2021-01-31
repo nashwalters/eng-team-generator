@@ -9,13 +9,38 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const render = require("./lib/htmlRenderer");
 
-
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 //Array for manager, engineer and intern
 let employees = [];
 
+//Variables to validate responses
+var validName = (input) => {
+    if ( input === "" || input.match(/\d+/g)!=null) {
+       return "Please enter valid name";
+    }
+     return true;
+}    
+var notNumber = (input) => {
+    if (isNaN(input)) {
+      return "Please enter a number";
+    }
+    return true;
+}
+var notEmpty = (input) => {
+    if (input === "") {
+      return "Please enter a valid response";
+    }
+    return true;
+}
+var validateEmail =  (input) => {
+    var r = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if ( r.test(input) != true) {
+       return "Please enter valid email";
+    }
+    return true
+}
 //Qusetion Array
 const questions = [
     {
@@ -29,35 +54,42 @@ const questions = [
     type: 'input',
         name: 'name',
         message: "What is the employee's name?",
+        validate: validName
     },
     {
     type: 'input',
         name: 'id',
         message: "What is the employee's ID number?",
+        validate: notNumber
+        
     },
     {
     type: 'input',
         name: 'officeNumber',
         message: "What is the office number?",
-        when: (data) => data.role === 'Manager'
+        when: (data) => data.role === 'Manager',
+        validate: notEmpty
       
     },
     {
     type: 'input',
         name: 'github',
         message: "What is the employee's github username?",
-        when: (data) => data.role === 'Engineer'
+        when: (data) => data.role === 'Engineer',
+        validate: notEmpty
     },
     {
     type: 'input',
         name: 'school',
         message: "Which school does the employee attend?",
-        when: (data) => data.role === 'Intern'
+        when: (data) => data.role === 'Intern',
+        validate: notEmpty
     },
     {
     type: 'input',
         name: 'email',
         message: "Enter the employee's email address.",
+        validate: validateEmail
     },
     {
     type: 'confirm',
@@ -65,6 +97,8 @@ const questions = [
         message: "Would you like to add another employee?",
     },
 ]
+
+
 
 const userPrompt = () =>
 inquirer.prompt(questions)
@@ -80,9 +114,14 @@ inquirer.prompt(questions)
     if (data.addnew === true) {
         userPrompt();
     }else{
-        fs.writeFile(outputPath,render(employees),(err) =>
+        fs.appendFile(outputPath,render(employees),(err) =>
         err ? console.log(err) : console.log('Success!'));
     } 
+     
+
 })
 
 userPrompt();
+
+
+
