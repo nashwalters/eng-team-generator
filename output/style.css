@@ -1,0 +1,17 @@
+/*General styles*/
+body {
+    background-color: lightslategray;
+}
+.team-heading {
+    background-color: lightskyblue;
+}
+h1 {
+    font-size: 4rem;
+}
+.employee-card{
+    margin-left: 5px;
+}
+.card-body {
+    background-color:lightgray;
+}
+
