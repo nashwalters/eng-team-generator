@@ -92,7 +92,13 @@ const questions = [
         message: "What is the ID number?",
         validate: notNumber
     },
-    
+    {
+    type: 'input',
+        name: 'officeNumber',
+        message: "What is the manager's office number?",
+        when: (data) => data.role === 'Manager',
+        validate: notEmpty
+    },
     {
     type: 'input',
         name: 'github',
