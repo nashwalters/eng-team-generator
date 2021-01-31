@@ -1,4 +1,4 @@
-<h1 align=center> Team Generator</h1>
+# Team Generator
 
 ## Table of Contents
 * [Description](#description)
@@ -22,7 +22,7 @@ There are also unit tests that were used to bulid the classes necessary.
 ## Installation
 Node.js, the npm's inquirer and jest are needed for this application.
 
-### Nodejs
+### Nodejs <a href=""><img alt="Nodejs" src="https://aleen42.github.io/badges/src/node.svg" target="_blank" /></a>
 Node.js is required on your local machine. To download Node.js please visit [Node.js download](https://nodejs.org/en/download/).
 
 To ensure Node.js has been installed, run the below command in your terminal - you should get something like v6.14.10.
@@ -30,7 +30,7 @@ To ensure Node.js has been installed, run the below command in your terminal - y
 node -v
 ```
 
-### Dependencies
+### Dependencies <a href=""><img alt="Dependencies" src="https://img.shields.io/badge/dependencies%20-up%20to%20date-orange" target="_blank" /></a>
 [Inquirer.js](https://www.npmjs.com/package/inquirer) package was used, run the below command in the terminal for the needed node modules.
 ```
 npm i inquirer
@@ -48,7 +48,7 @@ node app.js
 When the command is invoked, the user is prompted for to add information about the manager, engineer and intern. The user can input any number of team members, and they can be a mix of engineers and interns. The user's response is taken and the application creates an HTML file that displays a team rosster based on the information given. All questions have a function that validates the users answer to ensure that the information the user provides is in a format that is expected.
 
 #### Demo
-click [demo]()
+click [demo](https://drive.google.com/file/d/1UOM7_gLX0SNUiNuda21ENJuT3ODnO2kq/view)
 
 #### Screenshots
 
@@ -77,7 +77,7 @@ Steps to contribute:
 4. Push your work back up to your fork/branch
 5. Submit a Pull Request so that we can review your changes
 
-## Questions       
+## Questions  <a href="https://github.com/nashwalters"><img alt="Ask me anything" src="https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg" target="_blank" /></a>     
 If you have any questions, I can be reached via:
 * <bold>Email</bold>: nash.walters@outlook.com
 
@@ -85,7 +85,7 @@ If you have any questions, I can be reached via:
 * [Adam Simonini](https://github.com/adamsimonini)
 * Carleton University Coding Bootcamp
 
-## License 
+## License  <a href=""><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" /></a>
 Copyright © 2021 Nash Walters,
 
 Released under the [MIT](https://github.com/nashwalters/eng-team-generator/blob/main/LICENSE) license.
