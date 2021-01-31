@@ -17,25 +17,29 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 let employees = [];
 
 //Variables to validate responses
-var validName = (input) => {
+var validName = (input) => {   
+    //ensure that name isn't empty string or contains numbers                              
     if ( input === "" || input.match(/\d+/g)!=null) {
        return "Please enter valid name";
     }
      return true;
 }    
 var notNumber = (input) => {
+    //ensure that user input is a valid number
     if (isNaN(input)) {
       return "Please enter a number";
     }
     return true;
 }
 var notEmpty = (input) => {
+    //ensure that name isn't empty string
     if (input === "") {
       return "Please enter a valid response";
     }
     return true;
 }
 var validateEmail =  (input) => {
+    //ensure that email has the correct format
     var r = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if ( r.test(input) != true) {
        return "Please enter valid email";
@@ -43,6 +47,7 @@ var validateEmail =  (input) => {
     return true
 }
 var github = async (input, data) => {
+    //ensure that the username is a valid github username 
     const queryUrl= `https://api.github.com/users/${input}`
     try{
         await axios.get(queryUrl)
