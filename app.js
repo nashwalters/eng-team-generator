@@ -1,7 +1,8 @@
 // node modules
-const inquirer = require("inquirer");
-const path = require("path");
-const fs = require("fs");
+const inquirer = require('inquirer');
+const path = require('path');
+const fs = require('fs');
+const axios = require('axios')
 
 // lib modules
 const Manager = require("./lib/Manager");
@@ -40,6 +41,15 @@ var validateEmail =  (input) => {
        return "Please enter valid email";
     }
     return true
+}
+var github = async (input, data) => {
+    const queryUrl= `https://api.github.com/users/${input}`
+    try{
+        await axios.get(queryUrl)
+        return true
+    }catch{
+        return 'GITHUB user not found!'
+    }
 }
 //Qusetion Array
 const questions = [
@@ -83,7 +93,7 @@ const questions = [
         name: 'github',
         message: "What is the engineer's github username?",
         when: (data) => data.role === 'Engineer',
-        validate: notEmpty
+        validate: github
     },
     {
     type: 'input',
@@ -114,7 +124,7 @@ inquirer.prompt(questions)
     } else if (data.role === 'Engineer'){
         employees.push(new Engineer(data.name.toUpperCase(), data.id, data.email, data.github))
     } else {
-        employees.push(new Intern(data.name.toUpperCase, data.id, data.email, data.school))
+        employees.push(new Intern(data.name.toUpperCase(), data.id, data.email, data.school))
     } 
 
     if (data.addnew === true) {
