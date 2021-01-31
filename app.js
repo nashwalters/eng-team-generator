@@ -61,7 +61,6 @@ const questions = [
         name: 'id',
         message: "What is the employee's ID number?",
         validate: notNumber
-        
     },
     {
     type: 'input',
@@ -69,7 +68,6 @@ const questions = [
         message: "What is the office number?",
         when: (data) => data.role === 'Manager',
         validate: notEmpty
-      
     },
     {
     type: 'input',
@@ -98,8 +96,7 @@ const questions = [
     },
 ]
 
-
-
+// function to ask questions
 const userPrompt = () =>
 inquirer.prompt(questions)
 .then((data) => {
@@ -117,8 +114,6 @@ inquirer.prompt(questions)
         fs.appendFile(outputPath,render(employees),(err) =>
         err ? console.log(err) : console.log('Success!'));
     } 
-     
-
 })
 
 userPrompt();
