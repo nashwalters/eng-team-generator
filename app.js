@@ -141,7 +141,7 @@ inquirer.prompt(questions)
     if (data.addnew === true) {
         userPrompt();
     }else{
-        fs.appendFile(outputPath,render(employees),(err) =>
+        fs.writeFile(outputPath,render(employees),(err) =>
         err ? console.log(err) : console.log('Successfully added to team!'));
     } 
 })
